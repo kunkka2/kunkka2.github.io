@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Calendar - Calendar</title>
+        <title>2025-03-quicksort - Calendar</title>
 
 
         <!-- Custom HTML head -->
@@ -12,33 +12,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="mermaid.css">
-        <link rel="stylesheet" href="custom.css">
+        <link rel="stylesheet" href="../mermaid.css">
+        <link rel="stylesheet" href="../custom.css">
 
 
         <!-- Provide site root to javascript -->
         <script>
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc.js"></script>
+        <script src="../toc.js"></script>
     </head>
     <body>
     <div id="body-container">
@@ -90,7 +90,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
             </noscript>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -153,57 +153,39 @@
 
                 <div id="content" class="content">
                     <main>
-                        <pre><code class="language-mermaid">
-gantt
-    title Calendar Months
-    dateFormat MM-DD
-    axisFormat %B
-    section Year-2025
-        Quick Sort      :active, 03-01, 31d
-        Greedy          :02-01, 29d
-        Derivative[f`(x)]          :01-01, 31d
-    section Year-2024
-        exponentiation operation(Power operation)[constant,variable terms,coefficient]  :12-01, 31d
-        Hash table[Hash Function]  :11-01, 30d
-        Bucket sort or Bin sort  :10-01, 31d
-        Encrypt Decrypt  :09-01, 30d
-        Table of prime factors  :08-01, 31d
-        Bellman-Ford algorithm[find shortest path or cycle] :07-01, 31d
-        Dijkstra's algorithm[find the shortest path] :06-01, 30d
-        Graph is Cyclic[Dose graph contains a cycle]  :05-01, 31d
-        Dimension 3 Cross Product  :04-01, 30d
-        Point-Line Distance--3-Dimensional  :03-01, 31d
-        Depth-First Search (DFS)          :02-01, 29d
-        Breadth-First Search (BFS)          :01-01, 31d
-    section Year-2023
-        AVL Tree Add node :12-01, 31d
-        Right-Left Rotations[AVL Tree] :11-01, 30d
-        Left-Left Rotations[AVL Tree] :10-01, 31d
-        Right-Right Rotations[AVL Tree] :09-01, 30d
-        AVL Tree(self balancing tree)[Depth of nodes] :08-01, 31d
-        Evaluation of Postfix Expression :07-01, 31d
-        Tree find Successor :06-01, 30d
-        Tree find[Lower bound] :05-01, 31d
-        Tree print[Yield from,enumerate] :04-01, 30d
-        Lower Bound(sorted list,target) :03-01, 31d
-        Matrix Addition[Entrywise sum] :02-01, 29d
-        Dot Product[multiply matrices] :01-01, 31d
-    section Year-2022
-        Transpose of a Matrix :done, 12-01, 31d
-        Binomial Coefficient :done, 11-01, 30d
-        Convert Infix to Postfix Expression :done, 10-01, 31d
-        Boyer-Moore String-Search :done, 09-01, 30d
-        Evaluation Postfix Expression :done, 08-01, 31d
-</code></pre>
+                        <h1 id="quicksort"><a class="header" href="#quicksort">QuickSort</a></h1>
+<h2 id="key-charateristics-of-quicksort"><a class="header" href="#key-charateristics-of-quicksort">Key charateristics of QuickSort</a></h2>
+<ul>
+<li>Time Complexity:
+<ul>
+<li>Average case: $ \mathcal{O}(n\log n) $</li>
+<li>Worst case: $ \mathcal{O}(n^2) $  - rare with good pivot selection</li>
+<li>Best case: $ \mathcal{O}(n\log n) $</li>
+</ul>
+</li>
+<li>Space Complexity:
+<ul>
+<li>Average case:  $ \mathcal{O}(\log n) $ for the recursive call stack</li>
+<li>Best Case: $ \mathcal{O}(\log n) $</li>
+<li>Worst case: $ \mathcal{O}(n) $</li>
+</ul>
+</li>
+</ul>
+<h1 id="chapter-1"><a class="header" href="#chapter-1">Chapter 1</a></h1>
+<p>Here is an inline example, $ \mathcal{O}(n\log n) $,</p>
+<p>Here is an inline example, $ \pi(\theta) $,</p>
+<p>an equation,</p>
+<p>$$ \nabla f(x) \in \mathbb{R}^n, $$</p>
+<p>and a regular $ symbol.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-
-                            <a rel="next prefetch" href="2025/03-quicksort.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                            <a rel="prev" href="../calendar.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
                             </a>
+
 
                         <div style="clear: both"></div>
                     </nav>
@@ -211,10 +193,10 @@ gantt
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-
-                    <a rel="next prefetch" href="2025/03-quicksort.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                    <a rel="prev" href="../calendar.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
                     </a>
+
             </nav>
 
         </div>
@@ -227,17 +209,17 @@ gantt
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="mermaid.min.js"></script>
-        <script src="mermaid-init.js"></script>
+        <script src="../mermaid.min.js"></script>
+        <script src="../mermaid-init.js"></script>
 
 
     </div>
