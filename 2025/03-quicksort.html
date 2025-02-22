@@ -172,6 +172,92 @@
 </ul>
 </li>
 </ul>
+<h2 id="sorts-in-place-modifies-in-original-array"><a class="header" href="#sorts-in-place-modifies-in-original-array">sorts in place (modifies in original array)</a></h2>
+<pre><code class="language-python">def quicksort_inplace(arr, low, high):
+    def partition(low, high):
+        pivot = arr[high]
+        i = low - 1  # index of smaller element
+        
+        for j in range(low, high):
+            # If current element is smaller than or equal to pivot
+            if arr[j] &lt;= pivot:
+                i += 1  # increment index of smaller element
+                arr[i], arr[j] = arr[j], arr[i]
+        
+        arr[i + 1], arr[high] = arr[high], arr[i + 1]
+        return i + 1
+
+    if low &lt; high:
+        # pi is partitioning index
+        pi = partition(low, high)
+        
+        # Separately sort elements before and after partition
+        quicksort_inplace(arr, low, pi - 1)
+        quicksort_inplace(arr, pi + 1, high)
+
+# Usage
+arr = [7, 2, 1, 6, 8, 5, 3, 4]
+quicksort_inplace(arr, 0, len(arr)-1)
+</code></pre>
+<h1 id="calculate-quicksorts-time-complexity-step-by-step"><a class="header" href="#calculate-quicksorts-time-complexity-step-by-step">Calculate QuickSort's time complexity step by step.</a></h1>
+<h2 id="first-lets-understand-what-happens-at-each-partition-step"><a class="header" href="#first-lets-understand-what-happens-at-each-partition-step">First, let's understand what happens at each partition step:</a></h2>
+<pre><code class="language-python">def partition(arr,low,high):
+    pivot = arr[high]  # @1 O(1) .$ \mathcal{O}(1)$
+    i = low - 1 #  @1 O(1)
+
+    for j in range(low,high):  # @2 O(n) .$ \mathcal{O}(n) $
+        if arr[j] &lt;= pivot:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+    arr[i+1], arr[high] = arr[high], arr[i+1] # @1 O(1)
+    return i+1
+</code></pre>
+<ul>
+<li>1.<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></li>
+<li>2.<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<h2 id="lets-analyze-different-cases"><a class="header" href="#lets-analyze-different-cases">Let's analyze different cases:</a></h2>
+<h3 id="best-case"><a class="header" href="#best-case">Best Case:</a></h3>
+<pre><code>Initial array: [5,2,8,1,9,3]
+Perfect partition each time:
+Level 1:        [2,1,3] [5] [8,9]    → n comparisons
+Level 2:        [1] [2] [3]  [8] [9]  → n/2 + n/2 comparisons
+Depth: log n levels
+
+Time Complexity = O(n log n)
+</code></pre>
+<ul>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<h3 id="average-case"><a class="header" href="#average-case">Average Case:</a></h3>
+<pre><code>Each partition splits array into roughly equal parts:
+T(n) = T(n/2) + T(n/2) + n  (partition cost)
+     = 2T(n/2) + n
+
+Using Master Theorem:
+a = 2 (subproblems)
+b = 2 (size reduction)
+k = 1 (partition work)
+
+Time Complexity = O(n log n)
+</code></pre>
+<ul>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<h3 id="worst-case"><a class="header" href="#worst-case">Worst Case:</a></h3>
+<pre><code>Already sorted array: [1,2,3,4,5]
+Uneven partitions each time:
+Level 1: [] [1] [2,3,4,5]    → n comparisons
+Level 2:    [] [2] [3,4,5]   → (n-1) comparisons
+Level 3:       [] [3] [4,5]  → (n-2) comparisons
+
+Sum = n + (n-1) + (n-2) + ... + 1
+    = n(n+1)/2
+Time Complexity = O(n²)
+</code></pre>
+<ul>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></li>
+</ul>
 <h1 id="chapter-1"><a class="header" href="#chapter-1">Chapter 1</a></h1>
 <p>Here is an inline example, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>,</p>
 <p>Here is an inline example, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mclose">)</span></span></span></span>,</p>
@@ -187,6 +273,9 @@
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
+                            <a rel="next prefetch" href="../2025/02-greedy.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -198,6 +287,9 @@
                         <i class="fa fa-angle-left"></i>
                     </a>
 
+                    <a rel="next prefetch" href="../2025/02-greedy.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
