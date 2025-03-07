@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>2024-12-Power-Operation - Calendar</title>
+        <title>Simple Demo From Ai - Calendar</title>
 
 
         <!-- Custom HTML head -->
@@ -154,43 +154,107 @@
                 <div id="content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="exponentiation-operation---power-operation---constant---varible-term---coefficient"><a class="header" href="#exponentiation-operation---power-operation---constant---varible-term---coefficient">Exponentiation operation - Power Operation - constant - varible term - coefficient</a></h1>
-<ul>
-<li>see <a href="https://docs.sympy.org/latest/explanation/gotchas.html">SymPy</a></li>
-</ul>
-<pre><code class="language-python">class Operation:
-    def __init__(self,constant,varilbe_term,coefficient):
-        pass
-    def __pow__(self,*args):
-        return x*n
-    def 
-A = Operation()
-n = 1 or 2 or 3
-A ** n
+<p>Let me show you some practical everyday algorithms that solve common problems.</p>
+<ol>
+<li>Finding the Most Frequent Element</li>
+</ol>
+<pre><code class="language-python">def find_most_frequent(arr):
+    counter = {}
+    for item in arr:
+        counter[item] = counter.get(item, 0) + 1
+    
+    max_count = 0
+    most_frequent = None
+    for item, count in counter.items():
+        if count &gt; max_count:
+            max_count = count
+            most_frequent = item
+    return most_frequent
+
+# Example
+numbers = [1, 2, 3, 2, 4, 2, 5, 3]
+result = find_most_frequent(numbers)  # Returns 2
 </code></pre>
-<h2 id="symbolx"><a class="header" href="#symbolx">Symbol(x)</a></h2>
+<ol start="2">
+<li>Palindrome Checker</li>
+</ol>
+<pre><code class="language-python">def is_palindrome(text):
+    # Remove non-alphanumeric characters and convert to lowercase
+    cleaned_text = ''.join(c.lower() for c in text if c.isalnum())
+    return cleaned_text == cleaned_text[::-1]
+
+# Examples
+print(is_palindrome("A man, a plan, a canal: Panama"))  # True
+print(is_palindrome("race a car"))  # False
+</code></pre>
+<ol start="3">
+<li>Finding Missing Number in Sequence</li>
+</ol>
+<pre><code class="language-python">def find_missing_number(arr):
+    n = len(arr) + 1  # Expected length
+    expected_sum = (n * (n + 1)) // 2
+    actual_sum = sum(arr)
+    return expected_sum - actual_sum
+
+# Example
+numbers = [1, 2, 4, 6, 3, 7, 8]
+missing = find_missing_number(numbers)  # Returns 5
+</code></pre>
+<ol start="4">
+<li>String Pattern Matching (Simple)</li>
+</ol>
+<pre><code class="language-python">def find_pattern_occurrences(text, pattern):
+    positions = []
+    n, m = len(text), len(pattern)
+    
+    for i in range(n - m + 1):
+        if text[i:i+m] == pattern:
+            positions.append(i)
+    
+    return positions
+
+# Example
+text = "AABAACAADAABAAABAA"
+pattern = "AA"
+positions = find_pattern_occurrences(text, pattern)  # Returns [0, 3, 9, 12, 13, 16]
+</code></pre>
+<ol start="5">
+<li>Finding Pairs that Sum to Target</li>
+</ol>
+<pre><code class="language-python">def find_pairs(arr, target):
+    seen = set()
+    pairs = []
+    
+    for num in arr:
+        complement = target - num
+        if complement in seen:
+            pairs.append((complement, num))
+        seen.add(num)
+    
+    return pairs
+
+# Example
+numbers = [2, 7, 11, 15, 3, 6]
+target_sum = 9
+result = find_pairs(numbers, target_sum)  # Returns [(2, 7), (3, 6)]
+</code></pre>
+<p>These algorithms demonstrate different problem-solving strategies:</p>
 <ul>
-<li>__pow__ methods: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span></li>
-<li>__sub__ methods: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></li>
-<li>__rsub__ methods: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></li>
-<li>__neg__ methods: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord mathnormal">x</span></span></span></span></li>
-<li>__sub__ methods: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></li>
-<li>__rsub__ methods: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></li>
-<li>__mul__ methods: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4653em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></li>
-<li>__rmul__ methods: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4653em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></li>
+<li>Hash tables for counting and lookup (find_most_frequent, find_pairs)</li>
+<li>String manipulation (is_palindrome)</li>
+<li>Mathematical formulas (find_missing_number)</li>
+<li>Simple pattern matching (find_pattern_occurrences)</li>
 </ul>
+<p>Would you like me to explain any of these in more detail or show you some variations of these algorithms?</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../2025/01-Derivative.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../2024/06-Dijkstra-algorithm.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../2024/11-Hash-table.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -198,13 +262,10 @@ A ** n
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../2025/01-Derivative.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../2024/06-Dijkstra-algorithm.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../2024/11-Hash-table.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
             </nav>
 
         </div>
