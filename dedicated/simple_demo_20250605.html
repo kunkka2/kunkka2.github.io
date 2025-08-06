@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="light" dir="ltr">
+<html lang="en" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -27,28 +27,43 @@
         <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="../highlight.css">
-        <link rel="stylesheet" href="../tomorrow-night.css">
-        <link rel="stylesheet" href="../ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../mermaid.css">
         <link rel="stylesheet" href="../custom.css">
 
-    </head>
-    <body class="sidebar-visible no-js">
-    <div id="body-container">
-        <!-- Provide site root to javascript -->
-        <script>
-            var path_to_root = "../";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script>
 
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
                     localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
@@ -62,70 +77,51 @@
 
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script>
-            var theme;
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            var html = document.querySelector('html');
+            const html = document.documentElement;
             html.classList.remove('light')
             html.classList.add(theme);
-            var body = document.querySelector('body');
-            body.classList.remove('no-js')
-            body.classList.add('js');
+            html.classList.add("js");
         </script>
 
         <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var body = document.querySelector('body');
-            var sidebar = null;
-            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
+                sidebar_toggle.checked = false;
             }
-            sidebar_toggle.checked = sidebar === 'visible';
-            body.classList.remove('sidebar-visible');
-            body.classList.add("sidebar-" + sidebar);
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="calendar.html">Calendar</a></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.</strong> YEAR 2025</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="2025/08-Test-TestCase-LRUCacheTestCase.html"><strong aria-hidden="true">1.1.</strong> 2025-08-Test TestCase(LRUCacheTestCase)</a></li><li class="chapter-item expanded "><a href="2025/07-Sieve-of-Eratothenes.html"><strong aria-hidden="true">1.2.</strong> 2025-07-Prime Number Generator (Sieve of Eratosthenes)</a></li><li class="chapter-item expanded "><a href="2025/06-find-pattern-occurrences.html"><strong aria-hidden="true">1.3.</strong> 2025-06-find-pattern-occurrences</a></li><li class="chapter-item expanded "><a href="2025/05-find-missing-number.html"><strong aria-hidden="true">1.4.</strong> 2025-05-find-missing-number</a></li><li class="chapter-item expanded "><a href="2025/04-find-most-frequent.html"><strong aria-hidden="true">1.5.</strong> 2025-04-find-most-frequent</a></li><li class="chapter-item expanded "><a href="2025/03-quicksort.html"><strong aria-hidden="true">1.6.</strong> 2025-03-quicksort</a></li><li class="chapter-item expanded "><a href="2025/02-greedy.html"><strong aria-hidden="true">1.7.</strong> 2025-02-greedy</a></li><li class="chapter-item expanded "><a href="2025/01-Derivative.html"><strong aria-hidden="true">1.8.</strong> 2025-01-derivative</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> YEAR 2024</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="2024/12-Power-Operation.html"><strong aria-hidden="true">2.1.</strong> 2024-12-Power-Operation</a></li><li class="chapter-item expanded "><a href="2024/11-Hash-table.html"><strong aria-hidden="true">2.2.</strong> 2024-11-Hash-Table</a></li><li class="chapter-item expanded "><a href="2024/10-BucketSort-or-BinSort.html"><strong aria-hidden="true">2.3.</strong> 2024-10-Bucket Sort Or Bin Sort</a></li><li class="chapter-item expanded "><a href="2024/09-Encrypt-Decrypt.html"><strong aria-hidden="true">2.4.</strong> 2024-09-Encrypt-Decrypt</a></li><li class="chapter-item expanded "><a href="2024/08-Table-of-prime-factors.html"><strong aria-hidden="true">2.5.</strong> 2024-08-Table of prime factors</a></li><li class="chapter-item expanded "><a href="2024/07-Bellman-Ford-Algorithm.html"><strong aria-hidden="true">2.6.</strong> 2024-07-Bellman Ford Algorithm(find the shortest path or cycle)</a></li><li class="chapter-item expanded "><a href="2024/06-Dijkstra-algorithm.html"><strong aria-hidden="true">2.7.</strong> 2024-06-Dijkstra&#39;s Algorithm(find the shortest path)</a></li><li class="chapter-item expanded "><a href="2024/05-graph-is-cyclic.html"><strong aria-hidden="true">2.8.</strong> 2024-05-Graph is cyclic (Dose graph contains a cycle)</a></li><li class="chapter-item expanded "><a href="2024/04-cross-product.html"><strong aria-hidden="true">2.9.</strong> 2024-04-Cross Product(Dimension 3)</a></li><li class="chapter-item expanded "><a href="2024/03-point-line-distance.html"><strong aria-hidden="true">2.10.</strong> 2024-03-Point Line Distance(Dimension 3)</a></li><li class="chapter-item expanded "><a href="2024/02-depth-first-search.html"><strong aria-hidden="true">2.11.</strong> 2024-02-Depth First Search(DFS)</a></li><li class="chapter-item expanded "><a href="2024/01-breadth-first-search.html"><strong aria-hidden="true">2.12.</strong> 2024-01-Breadth First Search(BFS)</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> YEAR 2023</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="2023/12-AvlTree-Add-Node.html"><strong aria-hidden="true">3.1.</strong> 2023-12-Avl Tree Add Node</a></li><li class="chapter-item expanded "><a href="2023/11-AvlTree-Right-Left-Rotations.html"><strong aria-hidden="true">3.2.</strong> 2023-11-Avl Tree Right Left Rotations</a></li><li class="chapter-item expanded "><a href="2023/10-AvlTree-Left-Left-Rotations.html"><strong aria-hidden="true">3.3.</strong> 2023-10-Avl Tree Left Left Rotations</a></li><li class="chapter-item expanded "><a href="2023/09-AvlTree-Right-Right-rotations.html"><strong aria-hidden="true">3.4.</strong> 2023-09-Avl Tree Right Right Rotations</a></li><li class="chapter-item expanded "><a href="2023/08-AvlTree-Depth-of-nodes.html"><strong aria-hidden="true">3.5.</strong> 2023-08-Avl Tree Depth of notes</a></li><li class="chapter-item expanded "><a href="2023/07-Evaluation-of-Postfix-Expression.html"><strong aria-hidden="true">3.6.</strong> 2023-07-Evaluation of Postfix Expression</a></li><li class="chapter-item expanded "><a href="2023/06-Tree-find-Successor.html"><strong aria-hidden="true">3.7.</strong> 2023-06-Tree find Successor</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> YEAR 2022</div></li><li class="chapter-item expanded affix "><li class="spacer"></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> DEDICATED</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="dedicated/simple_demo_from_ai.html"><strong aria-hidden="true">5.1.</strong> Simple Demo From Ai</a></li><li class="chapter-item expanded "><a href="dedicated/simple_demo_20250605.html"><strong aria-hidden="true">5.2.</strong> Simple Demo 2025-06-05</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Demo</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="demos/tools.html"><strong aria-hidden="true">6.1.</strong> Simple - tools.py</a></li></ol></li><li class="chapter-item expanded "><a href="about.html"><strong aria-hidden="true">7.</strong> About</a></li></ol>
-            </div>
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <!-- Track and set sidebar scroll position -->
-        <script>
-            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
-            sidebarScrollbox.addEventListener('click', function(e) {
-                if (e.target.tagName === 'A') {
-                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
-                }
-            }, { passive: true });
-            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
-            sessionStorage.removeItem('sidebar-scroll');
-            if (sidebarScrollTop) {
-                // preserve sidebar scroll position when navigating via links within sidebar
-                sidebarScrollbox.scrollTop = sidebarScrollTop;
-            } else {
-                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
-                var activeSection = document.querySelector('#sidebar .active');
-                if (activeSection) {
-                    activeSection.scrollIntoView({ block: 'center' });
-                }
-            }
-        </script>
-
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="header-top-all"><div>
+                <div id="header-top-all"></div>
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
@@ -136,13 +132,14 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -159,7 +156,12 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -376,6 +378,7 @@ result = longest_common_subsequence("ABCDGH", "AEDFHR")  # Returns "ADH"
         <!-- Custom JS scripts -->
         <script src="../mermaid.min.js"></script>
         <script src="../mermaid-init.js"></script>
+
 
 
     </div>
