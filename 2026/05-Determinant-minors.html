@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Simple Demo From Ai - Calendar</title>
+        <title>2026-05-Determinant minors - Calendar</title>
 
 
         <!-- Custom HTML head -->
@@ -187,108 +187,18 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<p>Let me show you some practical everyday algorithms that solve common problems.</p>
-<ol>
-<li>Finding the Most Frequent Element</li>
-</ol>
-<pre><code class="language-python">def find_most_frequent(arr):
-    counter = {}
-    for item in arr:
-        counter[item] = counter.get(item, 0) + 1
-    
-    max_count = 0
-    most_frequent = None
-    for item, count in counter.items():
-        if count &gt; max_count:
-            max_count = count
-            most_frequent = item
-    return most_frequent
-
-# Example
-numbers = [1, 2, 3, 2, 4, 2, 5, 3]
-result = find_most_frequent(numbers)  # Returns 2
-</code></pre>
-<ol start="2">
-<li>Palindrome Checker</li>
-</ol>
-<pre><code class="language-python">def is_palindrome(text):
-    # Remove non-alphanumeric characters and convert to lowercase
-    cleaned_text = ''.join(c.lower() for c in text if c.isalnum())
-    return cleaned_text == cleaned_text[::-1]
-
-# Examples
-print(is_palindrome("A man, a plan, a canal: Panama"))  # True
-print(is_palindrome("race a car"))  # False
-</code></pre>
-<ol start="3">
-<li>Finding Missing Number in Sequence</li>
-</ol>
-<pre><code class="language-python">def find_missing_number(arr):
-    n = len(arr) + 1  # Expected length
-    expected_sum = (n * (n + 1)) // 2
-    actual_sum = sum(arr)
-    return expected_sum - actual_sum
-
-# Example
-numbers = [1, 2, 4, 6, 3, 7, 8]
-missing = find_missing_number(numbers)  # Returns 5
-</code></pre>
-<ol start="4">
-<li>String Pattern Matching (Simple)</li>
-</ol>
-<pre><code class="language-python">def find_pattern_occurrences(text, pattern):
-    positions = []
-    n, m = len(text), len(pattern)
-    
-    for i in range(n - m + 1):
-        if text[i:i+m] == pattern:
-            positions.append(i)
-    
-    return positions
-
-# Example
-text = "AABAACAADAABAAABAA"
-pattern = "AA"
-positions = find_pattern_occurrences(text, pattern)  # Returns [0, 3, 9, 12, 13, 16]
-</code></pre>
-<ol start="5">
-<li>Finding Pairs that Sum to Target</li>
-</ol>
-<pre><code class="language-python">def find_pairs(arr, target):
-    seen = set()
-    pairs = []
-    
-    for num in arr:
-        complement = target - num
-        if complement in seen:
-            pairs.append((complement, num))
-        seen.add(num)
-    
-    return pairs
-
-# Example
-numbers = [2, 7, 11, 15, 3, 6]
-target_sum = 9
-result = find_pairs(numbers, target_sum)  # Returns [(2, 7), (3, 6)]
-</code></pre>
-<p>These algorithms demonstrate different problem-solving strategies:</p>
-<ul>
-<li>Hash tables for counting and lookup (find_most_frequent, find_pairs)</li>
-<li>String manipulation (is_palindrome)</li>
-<li>Mathematical formulas (find_missing_number)</li>
-<li>Simple pattern matching (find_pattern_occurrences)</li>
-</ul>
-<p>Would you like me to explain any of these in more detail or show you some variations of these algorithms?</p>
+<h1 id="determinant"><a class="header" href="#determinant">Determinant</a></h1>
+<h3 id="minors"><a class="header" href="#minors">minors</a></h3>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../2023/06-Tree-find-Successor.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../calendar-2023.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../dedicated/simple_demo_20250605.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../2026/04-Josephus-problem.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -298,11 +208,11 @@ result = find_pairs(numbers, target_sum)  # Returns [(2, 7), (3, 6)]
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../2023/06-Tree-find-Successor.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../calendar-2023.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../dedicated/simple_demo_20250605.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../2026/04-Josephus-problem.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
