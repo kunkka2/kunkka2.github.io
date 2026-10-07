@@ -16,15 +16,22 @@ patchMermaidCodeElementClass();
 mermaid.initialize({
     startOnLoad:true,
     //theme:"forest",
+    themeCSS: `
+    .mermaid .taskText, .mermaid .sectionTitle, .mermaid .theTitle {
+      letter-spacing: 1.5px !important;
+    }
+    `,
     //look: "classic",
     //look: "handDrawn",
     deterministicIds: false,
     darkMode: true,
     themeVariables:{
-
+        fontFamily: '"Microsoft YaHei", YaHei, sans-serif',
         //primaryColor: "#00FF00",
     },
     gantt:{
         deterministicIds: false,
+        fontSize: 14,
+        sectionFontSize: 18,
     },
 });
